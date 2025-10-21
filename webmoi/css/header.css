@@ -1,0 +1,275 @@
+/* ================================================
+    HEADER - STICKY PROFESSIONAL (CÓ ẨN HEADER-TOP)
+    ================================================ */
+header {
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  position: relative;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.4s ease;
+}
+
+/* HEADER TOP */
+.header-top {
+  background: #222;
+  color: white;
+  padding: 5px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* DÒNG ".header-top.hidden" ĐÃ BỊ XÓA */
+
+.header-top .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top a {
+  color: #fff;
+  margin-left: 15px;
+}
+
+.header-top a:hover {
+  color: var(--primary-color);
+  padding-left: 5px;
+  text-decoration: underline;
+}
+
+/* HEADER MAIN */
+.header-main {
+  position: sticky;
+  top: 35px; /* chiều cao gần đúng của header-top */
+  background: #fff;
+  z-index: 999;
+  padding: 10px 0;
+  /* SỬA DÒNG NÀY: Thêm 'top 0.4s ease' */
+  transition: box-shadow 0.3s ease, top 0.4s ease;
+}
+
+
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* LOGO */
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+  color: inherit;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #cf0a0a;
+  line-height: 1;
+  margin: 0;
+}
+
+/* SEARCH BAR */
+.header-search {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.search-form {
+  display: flex;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.search-form:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+}
+
+.search-form input {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.search-form button {
+  padding: 12px 30px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.search-form button:hover {
+  background: #ff5252;
+}
+
+/* HEADER ACTIONS */
+.header-actions {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.header-action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.header-action:hover {
+  background: var(--light-color);
+}
+
+.header-action-icon {
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.header-action-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+}
+
+.header-action-text {
+  font-size: 0.85rem;
+}
+
+.header-action-text strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+/* NAVIGATION */
+nav {
+  position: sticky;
+  top: 90px; /* ✅ = header-top (35px) + header-main (55px) */
+  background: var(--dark-color);
+  z-index: 998;
+  /* SỬA DÒNG NÀY: Thêm 'top 0.4s ease' */
+  transition: transform 0.4s ease, top 0.4s ease;
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 25px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* MEGA MENU */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  padding: 20px;
+  min-width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+nav ul li:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mega-menu a {
+  color: var(--text-color);
+  padding: 8px 15px;
+}
+
+.mega-menu a:hover {
+  background: var(--light-color);
+  color: var(--primary-color);
+}
+
+/* KHỐI CSS CŨ ĐÃ BỊ XÓA */
+
+
+/* ======================================================== */
+/* ===== THÊM ĐOẠN NÀY VÀO CUỐI FILE CSS CỦA BẠN ===== */
+/* ======================================================== */
+
+/* KHI TRANG BỊ CUỘN (BODY CÓ CLASS 'header-scrolled') */
+
+/* 1. Ẩn header-top bằng cách trượt nó lên */
+body.header-scrolled .header-top {
+  transform: translateY(-100%);
+}
+
+/* 2. Di chuyển header-main lên lấp khoảng trống (top: 0) */
+body.header-scrolled .header-main {
+  top: 0;
+  /* Thêm chút bóng đổ để đẹp hơn khi dính */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+}
+
+/* 3. Di chuyển nav lên theo (top: 55px) */
+/* (55px = 90px (vị trí cũ) - 35px (chiều cao header-top)) */
+/* !! Giả sử header-main của bạn cao 55px khi dính !! */
+body.header-scrolled nav {
+  top: 55px; 
+}

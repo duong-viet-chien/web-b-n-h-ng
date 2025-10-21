@@ -1,0 +1,91 @@
+
+body.login-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+/* ✅ Giới hạn form login đúng phần cần thu nhỏ */
+body.login-page .login-container {
+    max-width: 450px;
+    width: 100%;
+}
+
+.login-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.login-header .logo {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.login-header h2 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+.login-header p {
+    color: #666;
+}
+
+.login-header .logo img {
+    max-width: 80px; /* Thiết lập kích thước tối đa cho logo */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto; /* Căn giữa ảnh và tạo khoảng cách dưới */
+}
+.login-header .logo {
+    font-size: 0; /* Đặt về 0 để xóa khoảng trống thừa của ký tự cũ */
+    margin-bottom: 15px; 
+}
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+.social-btn {
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+.social-btn:hover {
+    border-color: var(--primary-color);
+    background: var(--light-color);
+}
+.divider {
+    text-align: center;
+    margin: 30px 0;
+    position: relative;
+}
+.divider:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: var(--border-color);
+}
+.divider span {
+    position: relative;
+    background: #fff;
+    padding: 0 20px;
+    color: #999;
+}
+.back-home {
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,0 +1,317 @@
+/* ================================================
+   HERO SLIDER (Dùng cho index.php)
+   ================================================ */
+/* slide làm nền */
+.hero-slide {
+background-size: cover; /* ảnh cover toàn khung (crop nếu cần) */
+background-position: center;  /* canh giữa */
+background-repeat: no-repeat;
+min-height: 70vh; /* hoặc 80vh / 100vh tuỳ ý */
+position: relative;
+color: #fff;
+overflow: hidden;
+padding: 0 50px;
+display: flex;
+/* 🔥 SỬA CHỮA: Đẩy nội dung xuống cuối cùng */
+align-items: flex-end; 
+justify-content: flex-start;
+}
+
+/* 🔥 SỬA CHỮA: Xóa các thuộc tính flex trên container trung gian */
+.hero-slide .container {
+margin: 0; 
+padding: 0;
+max-width: 100%; /* Cho phép container chiếm hết chiều rộng của slide */
+width: 100%;
+/* XÓA BỎ: align-items: center; */ 
+/* XÓA BỎ: justify-content: flex-start; */
+}
+
+/* lớp overlay để chữ nổi bật */
+.hero-slide::before{
+content: "";
+position: absolute;
+inset: 0;
+background: linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35));
+z-index: 1;
+}
+
+/* content nằm trên overlay */
+.hero-content{
+position: relative;
+z-index: 2;
+max-width: 600px;
+padding-left: 0;
+text-align: left; 
+margin-left: 50px;
+/* 🔥 THÊM: Tạo khoảng cách từ đáy slide */
+padding-bottom: 50px; 
+}
+
+/* tinh chỉnh tiêu đề, mô tả */
+.hero-content h2{ font-size: 3rem; margin-bottom: 0.8rem; }
+.hero-content p{ font-size: 1.1rem; margin-bottom: 1.2rem; }
+
+/* nút */
+.hero-buttons .btn-primary{
+background:#ff5252; color:#fff; padding:12px 26px; border-radius:8px; text-decoration:none;
+}
+.hero-buttons .btn-outline{
+border:2px solid rgba(255,255,255,0.9); color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none;
+}
+
+
+
+/* ================================================
+   CÀI ĐẶT ANIMATION CHUNG CHO SLIDER
+   ================================================ */
+/* Ẩn tất cả các phần tử animated khi slide chưa active */
+.hero-slide .animated {
+    opacity: 0;
+    /* Dừng animation ngay từ đầu */
+    animation-play-state: paused !important; 
+}
+
+/* Định nghĩa animation cơ bản (bạn đã có) */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-20px); }
+}
+/* KÍCH HOẠT ANIMATION khi slide đã active */
+.swiper-slide-active .animated {
+    /* Đảm bảo animation chạy lại khi slide mới được chọn */
+    animation-name: slideInLeft;
+    animation-duration: 0.8s; /* Thời gian chuyển động */
+    animation-fill-mode: forwards; /* Giữ lại trạng thái cuối cùng (opacity: 1) */
+    animation-timing-function: ease-out;
+    
+    /* Sử dụng biến --delay từ HTML */
+    animation-delay: var(--delay); 
+    
+    /* Khôi phục lại trạng thái chạy */
+    animation-play-state: running !important; 
+}
+/* ================================================
+   CATEGORY ICONS (Dùng cho index.php)
+   ================================================ */
+.category-section {
+    padding: 60px 0;
+    background: var(--light-color);
+}
+
+/* ----------------------------------- */
+/* CSS CHO DANH MỤC TRƯỢT NGANG (SLIDER) */
+/* ----------------------------------- */
+
+/* 1. CONTAINER BAO QUANH (Định vị Mũi tên) */
+.category-slider-container {
+    position: relative; 
+    /* Padding này chừa chỗ cho 2 nút trượt */
+    padding: 0 45px; 
+}
+
+/* 2. CONTAINER CUỘN NGANG */
+.category-slider {
+    display: flex;       /* 🔥 Bật Flexbox: buộc item nằm trên 1 hàng */
+    overflow-x: auto;    /* 🔥 Kích hoạt cuộn ngang */
+    overflow-y: hidden; 
+    white-space: nowrap; /* 🔥 QUAN TRỌNG: Ngăn các item xuống dòng */
+    gap: 20px;           /* Khoảng cách giữa các item */
+    padding-bottom: 10px; 
+    scroll-behavior: smooth;
+    
+    /* Ẩn thanh cuộn mặc định trên các trình duyệt */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;    /* Firefox */
+}
+
+/* Ẩn thanh cuộn cho Webkit (Chrome, Safari) */
+.category-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* 3. CÁC ITEM DANH MỤC */
+.category-item {
+    /* Đảm bảo mỗi item chiếm kích thước cố định, không co giãn */
+    flex: 0 0 auto; 
+    width: 180px; /* Chiều rộng cố định cho mỗi thẻ danh mục */
+    min-width: 150px; 
+    white-space: normal; /* Cho phép văn bản bên trong item xuống dòng */
+    text-align: center;
+}
+
+/* 4. KIỂM SOÁT KÍCH THƯỚC ẢNH */
+.category-item .category-image-wrapper {
+    width: 100%;
+    height: 120px; /* Chiều cao cố định cho khung ảnh */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.category-item img {
+    width: 100%;
+    height: 100%;
+    /* Đảm bảo ảnh hiển thị đầy đủ, không bị cắt và giữ tỉ lệ */
+    object-fit: contain; 
+}
+/* -------------------------- */
+/* CSS CHO NÚT TRƯỢT */
+/* -------------------------- */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: #ffffff; 
+    color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Bóng đổ đẹp hơn */
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.slider-btn:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+.slider-btn.prev { 
+    left: 0; 
+}
+
+.slider-btn.next { 
+    right: 0; 
+}
+
+/* Ẩn mũi tên trên màn hình điện thoại */
+@media (max-width: 768px) {
+    .slider-btn {
+        display: none; 
+    }
+    .category-slider-container {
+        padding: 0 15px; /* Giữ padding cơ bản cho nội dung */
+    }
+}
+.category-card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-color: var(--primary-color);
+}
+
+/* KHỐI NÀY ĐÃ ĐƯỢC HỢP NHẤT VÀ SỬA ĐỔI */
+.category-icon {
+    /* Thiết lập kích thước cố định cho vùng chứa icon */
+    width: 60px; 
+    height: 60px;
+    margin: 0 auto 10px; /* Canh giữa và tạo khoảng cách dưới */
+    
+    /* Xóa bỏ font-size và color không cần thiết cho ảnh */
+}
+
+.category-icon .category-img {
+    /* Đảm bảo thẻ <img> bên trong chiếm toàn bộ vùng chứa */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Giữ tỷ lệ ảnh */
+}
+
+.category-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.category-card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ================================================
+    PRODUCTS SLIDER (SẢN PHẨM NỔI BẬT TRƯỢT NGANG)
+    ================================================ */
+
+/* 1. CONTAINER BAO QUANH (Dùng chung cấu trúc với category-slider-container) */
+.featured-slider-container {
+    position: relative; 
+    /* Áp dụng padding chừa chỗ cho mũi tên, giống với danh mục */
+    padding: 0 45px; 
+}
+
+/* 2. CONTAINER CUỘN NGANG (Dùng chung cấu trúc với category-slider) */
+.product-slider-horizontal {
+    display: flex;       /* 🔥 Bật Flexbox: buộc item nằm trên 1 hàng */
+    overflow-x: auto;    /* 🔥 Kích hoạt cuộn ngang */
+    overflow-y: hidden; 
+    white-space: nowrap; /* 🔥 QUAN TRỌNG: Ngăn các item xuống dòng */
+    gap: 30px;           /* Khoảng cách giữa các sản phẩm. Có thể lớn hơn danh mục */
+    padding-bottom: 10px; 
+    scroll-behavior: smooth;
+    
+    /* Ẩn thanh cuộn mặc định */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;    /* Firefox */
+}
+
+/* Ẩn thanh cuộn cho Webkit (Chrome, Safari) */
+.product-slider-horizontal::-webkit-scrollbar {
+    display: none;
+}
+
+/* 3. CÁC THẺ SẢN PHẨM TRONG SLIDER */
+.product-card.featured-product-card {
+    /* Quan trọng: Đảm bảo thẻ có kích thước cố định và không co lại */
+    flex: 0 0 auto; 
+    width: 280px; /* Chiều rộng cố định cho mỗi thẻ sản phẩm */
+    min-width: 280px; 
+    white-space: normal; /* Cho phép văn bản bên trong thẻ xuống dòng */
+}
+
+/* 4. ĐIỀU CHỈNH VỊ TRÍ NÚT TRƯỢT */
+/* Sử dụng các nút .slider-btn chung, chỉ cần định vị lại */
+
+.featured-slider-container .featured-prev {
+    /* Đặt nút sang bên trái */
+    left: 0; 
+}
+
+.featured-slider-container .featured-next {
+    /* Đặt nút sang bên phải */
+    right: 0;
+}
+
+/* Điều chỉnh vị trí nút trượt trên màn hình nhỏ (giống với danh mục) */
+@media (max-width: 768px) {
+    .featured-slider-container .slider-btn {
+        display: none; /* Ẩn nút mũi tên trên di động */
+    }
+    .featured-slider-container {
+        padding: 0 15px; /* Giữ padding cơ bản cho nội dung */
+    }
+}

@@ -1,0 +1,73 @@
+ body.register-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        body.login-page .login-container {
+    max-width: 450px;
+    width: 100%;
+}
+        .register-container {
+            max-width: 450px;
+            width: 100%;
+        }
+        .register-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .register-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .register-header .logo {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .register-header h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        .register-header p {
+            color: #666;
+        }
+        
+        .register-header .logo img {
+            /* Định dạng cho ảnh */
+            max-width: 80px; /* Thiết lập kích thước tối đa (có thể tùy chỉnh) */
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto; /* Căn giữa ảnh và tạo khoảng cách dưới */
+        }
+
+        .register-header .logo {
+            font-size: 0; 
+            margin-bottom: 15px; 
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .back-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .password-strength {
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s;
+        }

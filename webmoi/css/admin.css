@@ -1,0 +1,294 @@
+/**
+ * FILE: css/admin.css
+ * MÔ TẢ: CSS cho Giao diện Quản trị viên (Admin Panel)
+ */
+
+/* ================================================
+   ADMIN STYLES
+   ================================================ */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background: var(--light-color);
+}
+
+.admin-sidebar {
+    width: 260px;
+    background: var(--dark-color);
+    color: #fff;
+    padding: 0;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.admin-sidebar h2 {
+    padding: 30px 20px;
+    font-size: 1.5rem;
+    background: rgba(0,0,0,0.2);
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.admin-sidebar ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    color: rgba(255,255,255,0.8);
+    transition: var(--transition);
+}
+
+.admin-sidebar ul li a:hover,
+.admin-sidebar ul li a.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.admin-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 30px;
+}
+
+.admin-header {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--primary-color), #ff8e8e);
+    color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.stat-card:nth-child(2) {
+    background: linear-gradient(135deg, var(--success-color), #55efc4);
+}
+
+.stat-card:nth-child(3) {
+    background: linear-gradient(135deg, var(--secondary-color), #74ebd5);
+}
+
+.stat-card:nth-child(4) {
+    background: linear-gradient(135deg, var(--warning-color), #ffeaa7);
+}
+
+.stat-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* ================================================
+   DATA TABLES
+   ================================================ */
+.data-table {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead tr {
+    background: var(--light-color);
+}
+
+.data-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.data-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:hover {
+    background: var(--light-color);
+}
+
+/* ================================================
+   ADMIN RESPONSIVE
+   ================================================ */
+@media (max-width: 1024px) {
+    .admin-sidebar {
+        width: 220px;
+    }
+    
+    .admin-content {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+    
+    .admin-sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+    
+    .admin-content {
+        margin-left: 0;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ================================================
+   BỔ SUNG CHO FORM VÀ QUẢN LÝ BÀI VIẾT (NEWS)
+   ================================================ */
+
+/* --- Form Container & Input (Cho add_news.php / edit_news.php) --- */
+.form-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-group .required {
+    color: var(--danger-color, #dc3545); /* Sử dụng màu đỏ */
+    margin-left: 3px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group .error-message {
+    color: var(--danger-color, #dc3545);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-group .form-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+/* --- Badges (Cho news.php và orders.php) --- */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* Badge màu xanh nhạt cho danh mục/thông tin (category) */
+.badge-info {
+    background-color: #e0f7fa;
+    color: #00bcd4;
+}
+
+/* Badge mặc định (Bạn có thể dùng cho trạng thái khác) */
+.badge-secondary {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* --- Nút hành động trong Bảng (Cho news.php) --- */
+
+/* Nút Sửa (Info) */
+.btn-info { 
+    background-color: #17a2b8;
+    color: #fff;
+    border: 1px solid #17a2b8;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+.btn-info:hover {
+    background-color: #138496;
+}
+
+/* Nút Xóa (Delete) */
+.btn-delete {
+    background-color: #dc3545; 
+    color: white; 
+    border: none; 
+    padding: 5px 10px; 
+    border-radius: 8px; 
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}

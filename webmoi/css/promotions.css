@@ -1,0 +1,19 @@
+   /* style.css */
+
+/* Hiệu ứng nút CTA riêng để dễ chỉnh sửa */
+.cta-btn {
+  width: 100%;
+  background-color: #facc15; /* Vàng */
+  color: #7f1d1d;            /* Đỏ đậm */
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+.cta-btn:hover {
+  background-color: #fde047;
+  transform: scale(1.05);
+}
